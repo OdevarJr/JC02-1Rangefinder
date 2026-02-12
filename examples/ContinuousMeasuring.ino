@@ -10,13 +10,13 @@
 #include <JC02-1Rangefinder.h>
 #include <SoftwareSerial.h>
 
-SoftwareSerial rf.Serial(10,11); //RX, TX pins to UART communication. Connect ARDUINO RX to RANGEFINDER TX, and ARDUINO TX to RANGEFINDER RX
+SoftwareSerial rfSerial(10,11); //RX, TX pins to UART communication. Connect ARDUINO RX to RANGEFINDER TX, and ARDUINO TX to RANGEFINDER RX
 
-Rangefinder rf(rf.Serial);
+Rangefinder rf(rfSerial);
 
 void setup() {
   Serial.begin(115200);
-  Serial1.begin(9600); // the module has a default baudrate of 9600
+  rfSerial.begin(9600); // the module has a default baudrate of 9600
   Serial.println("Starting");
   delay(500); // a litle time to sensor start-up
   rf.begin(); // starts the sensor continuous measuring
