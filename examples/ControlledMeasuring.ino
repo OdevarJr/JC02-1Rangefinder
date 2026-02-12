@@ -1,7 +1,7 @@
 /*
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 |                                                      JC-02-1 series laser rangefinder library examples                                                          |
-| A more complex example that uses the full library capabilities. Here we get the measuring STATUS to control the measuring behavior:                             |
+| A more complex example that uses the full library capabilities. Here we get the module's STATUS to control the measuring behavior:                              |
 | the library returns the following status: 0=No data available 1=continuous measuring started 2=continuous measuring stopped 3=measuring error 4=valid measuring |
 |                                                                                                                                                                 |
 | WARNING! JC-02-1 sensors operates at 3.3 volts, including TTL level RX/TX. Please use level shifter if communicating with 5V Arduino boards!                    |
@@ -11,13 +11,13 @@
 #include <JC02-1Rangefinder.h>
 #include <SoftwareSerial.h>
 
-SoftwareSerial mySerial(10,11); //RX, TX
-Rangefinder rf(mySerial);
+SoftwareSerial rfSerial(10,11); //RX, TX
+Rangefinder rf(rfSerial);
 
 void setup() {
   Serial.begin(115200);
   delay(500);
-  mySerial.begin(9600);
+  rfSerial.begin(9600); // the module has a default baudrate of 9600bps
   // functions menu
   Serial.println("**  JC02-1 LASER RANGEFINDER MENU  **");
   Serial.println(">SELECT:");
